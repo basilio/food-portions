@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tabla de alimentos y porciones | Valeria Navarro</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+	<link rel="stylesheet" href="style.css">
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
+	<script src="data.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div class="container">
+			<!-- Grupo -->
+			<div class="groups">
+				<section class="group" v-for="group in groups">
+					<header class="group__header">
+						<h2 class="group__title">{{ group.name }}</h2>
+						<form class="group__portions">
+							<label>Porciones por día</label>
+							<input type="text" v-model="group.portion">
+						</form>
+					</header>
+					<div class="subgroup" v-for="subgroup in group.subgroups">
+						<header class="subgroup__header">
+							<h3 class="subgroup__title">{{ subgroup.name }}</h3>
+							<div class="subgroup__portion-details">
+								<h4 class="subgroup__portion-details__title">Una porción aporta:</h4>
+								<ul class="portion-items">
+									<li class="portion-item">
+										<strong class="portion-item__value">{{ subgroup.calories }}</strong>
+										<span class="portion-item__label">Calorías</span>
+									</li>
+									<li class="portion-item">
+										<strong class="portion-item__value">{{ subgroup.cho }}</strong>
+										<span class="portion-item__label">Carbohidratos</span>
+									</li>							<li class="portion-item">
+										<strong class="portion-item__value">{{ subgroup.protein }}</strong>
+										<span class="portion-item__label">Proteínas</span>
+									</li>							<li class="portion-item">
+										<strong class="portion-item__value">{{ subgroup.fat }}</strong>
+										<span class="portion-item__label">Lípidos</span>
+									</li>
+								</ul>
+							</div>
+						</header>
+						<ul class="group__foods">
+							<li class="food" v-for="food in subgroup.food_types">
+								<div class="food__names">
+									<div class="food__name">{{ food.name }}</div>
+								</div>
+								<div class="food__portions">
+									<div class="food-portion" v-for="food_portion in food.values">
+										<strong class="food-portion__value">{{ food_portion.value }}</strong>
+										<span class="food-portion__unit">{{ food_portion.unit }}</span>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
+	<script>
+		const { createApp } = Vue
+		createApp({
+			data() {
+				return {
+					groups: groups
+				}
+			}
+		}).mount('#app')
+	</script>
+</body>
+</html>

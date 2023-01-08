@@ -1,0 +1,210 @@
+:root {
+	/* Paleta 1 */
+	--color--pale-spring-bud:		#D6D5B3;
+	--color--rose:					#F92A82;
+	--color--amaranth-purple:		#7b0337;
+	--color--candy: 				#ED7B84;
+	--color--champange-pink: 		#F5DBCB;
+	--color--dark-sean-green: 		#7EB77F;
+	/* Paleta 2 */
+	--color--bud-green:				#6da34dff;
+	--color--english-violet:		#56445dff;
+	--color--steel-teal:			#548687ff;
+	--color--steel-teal-dark:		#042727;
+	--color--dark-sea-green:		#8fbc94ff;
+	--color--yellow-green-crayola:	#c5e99bff;
+	--color--tea-green: 			#D8F0BCff;
+	--color--green-yellow-crayola:	#E1E289ff;
+	/* Font families */
+	--font-family--body:		'Open Sans', Helvetica, sans-serif;
+	--font-family--headings:	Merriweather, Georgia, 'Times New Roman', Times, serif;
+}
+body {
+	font-family: var(--font-family--body);
+	font-size: 1rem;
+	line-height: 1.5;
+	color: var(--color--steel-teal-dark);
+	-webkit-print-color-adjust: exact !important;
+	  print-color-adjust: exact !important;
+}
+.container {
+	max-width: 1100px;
+	margin-left: auto;
+	margin-right: auto;
+}
+h1 {
+	font-size: 2.5rem;
+	font-weight: 700;
+}
+h2 {
+	font-size: .925rem;
+}
+h3 {
+	font-size: .8rem;
+}
+h4 {
+	font-size: 1.2rem
+}
+h1,
+h2,
+h3,
+h4 {
+	font-family: var(--font-family--headings);
+	line-height: 1.2;
+}
+.site-header__author {
+	font-size: 1.25rem;
+}
+.main-title {
+	margin-bottom: 1rem;
+	text-align: center;
+}
+.groups {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: masonry;
+	gap: 1rem;
+}
+.group {
+	background-color: var(--color--champange-pink);
+	border-radius: .25rem;
+	padding: .65rem;
+}
+.group:nth-child(2n+1) {
+	background-color: var(--color--tea-green);
+}
+.group__header {
+	display: grid;
+	grid-template-columns: 1fr min-content;
+	gap: 1.25rem;
+	align-items: center;
+	margin-bottom: .75rem;
+	line-height: 1.2;
+}
+.group__title {
+	grid-column: 1/2;
+	font-weight: 700;
+}
+.group__portions {
+	grid-column: 2/3;
+	margin-left: auto;
+	display: grid;
+	grid-template-columns: min-content auto;
+	gap: .5rem;
+}
+.group__portions label {
+	display: grid;
+	font-size: .75rem;
+	text-align: right;
+	align-content: center;
+}
+.group__portions input {
+	width: 2rem;
+	height: 2rem;
+	font-family: var(--font-family--headings);
+	font-size: 1.25rem;
+	font-weight: 700;
+	text-align: center;
+	border: none;
+	border-radius: .2rem;
+}
+/* Subgroups */
+.subgroup + .subgroup {
+	margin-top: .65rem;
+}
+.subgroup__header {
+	margin-bottom: .25rem;
+}
+.subgroup__title {
+	margin-bottom: .125rem;
+	font-family: var(--font-family--body);
+	font-weight: 700;
+	text-transform: uppercase;
+}
+.subgroup__portion-details__title {
+	display: none;
+	font-family: var(--font-family--body);
+	font-size: .75rem;
+}
+/* Listado de aporte por porción */
+.portion-items {
+	grid-column: 2/3;
+	display: grid;
+	grid-template-columns: repeat(4, max-content);
+	gap: .5rem;
+}
+.portion-item {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: .25rem;
+}
+.portion-item__value {
+	font-size: .85rem;
+	font-family: var(--font-family--headings);
+	font-weight: 700;
+}
+.portion-item__label {
+	font-size: .625rem;
+	text-transform: uppercase;
+}
+/* Listado de alimentos */
+.group__foods {
+	display: grid;
+	/* grid-template-columns: repeat(3, auto); */
+	gap: .3rem;
+	margin-left: 0;
+	padding-left: 0;
+	list-style: none;
+}
+/* Cada alimento */
+.food {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 1rem;
+	padding: .35rem;
+	background-color: #ffffff99;
+	border-radius: .25rem;
+}
+.food:only-child,
+.group:nth-child(2) .subgroup:last-child .food:first-child {
+	/* grid-column: 1/4; */
+}
+.food__names {
+	grid-column: 1/2;
+	margin-top: auto;
+	margin-bottom: auto;
+	gap: .25rem;
+	line-height: 1.25;
+}
+.food__name {
+	font-size: .775rem;
+	font-weight: 600;
+}
+.food__portions {
+	grid-column: 2/3;
+	display: flex;
+	justify-content: flex-end;
+	gap: .5rem;
+	line-height: 1.1;
+}
+.food-portion {
+	display: flex;
+	align-items: center;
+	gap: .125rem;
+}
+.food-portion + .food-portion::before {
+	display: inline-block;
+	content: 'ó ';
+	margin-right: .25rem;
+	font-size: .675rem;
+}
+.food-portion__value {
+	font-family: var(--font-family--headings);
+	font-size: .75rem;
+	font-weight: 700;
+}
+.food-portion__unit {
+	font-size: .625rem;
+	text-transform: uppercase;
+}
