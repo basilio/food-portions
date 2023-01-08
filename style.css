@@ -6,6 +6,11 @@
 	--color--candy: 				#ED7B84;
 	--color--champange-pink: 		#F5DBCB;
 	--color--dark-sean-green: 		#7EB77F;
+	--color--celeste: 				#BAF2E9;
+	--color--sea-green-crayola:		#35FDDC;
+	--color--china-pink: 			#D4709899;
+	--color--russia-green: 			#738B5Aff;
+	--color--olivine: 				#99B679bb;
 	/* Paleta 2 */
 	--color--bud-green:				#6da34dff;
 	--color--english-violet:		#56445dff;
@@ -16,8 +21,11 @@
 	--color--tea-green: 			#D8F0BCff;
 	--color--green-yellow-crayola:	#E1E289ff;
 	/* Font families */
-	--font-family--body:		'Open Sans', Helvetica, sans-serif;
-	--font-family--headings:	Merriweather, Georgia, 'Times New Roman', Times, serif;
+	--font-family--body:			'Open Sans', Helvetica, sans-serif;
+	--font-family--headings: 		Merriweather, Georgia, 'Times New Roman', Times, serif;
+	/* Configuraciones */
+	--color--group:					var(--color--china-pink);
+	--color--group-alt:				var(--color--olivine);
 }
 body {
 	font-family: var(--font-family--body);
@@ -63,15 +71,19 @@ h4 {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	grid-template-rows: masonry;
-	gap: 1rem;
+	gap: .75rem;
 }
 .group {
-	background-color: var(--color--champange-pink);
+	background-color: var(--color--group);
 	border-radius: .25rem;
 	padding: .65rem;
 }
-.group:nth-child(2n+1) {
-	background-color: var(--color--tea-green);
+.group:nth-child(2n+1),
+.group:nth-child(5) {
+	background-color: var(--color--group-alt);
+}
+.group:nth-child(6) {
+	background-color: var(--color--group);
 }
 .group__header {
 	display: grid;
@@ -162,13 +174,9 @@ h4 {
 	display: grid;
 	grid-template-columns: auto 1fr;
 	gap: 1rem;
-	padding: .35rem;
+	padding: .25rem .35rem;
 	background-color: #ffffff99;
 	border-radius: .25rem;
-}
-.food:only-child,
-.group:nth-child(2) .subgroup:last-child .food:first-child {
-	/* grid-column: 1/4; */
 }
 .food__names {
 	grid-column: 1/2;
@@ -178,7 +186,7 @@ h4 {
 	line-height: 1.25;
 }
 .food__name {
-	font-size: .775rem;
+	font-size: .725rem;
 	font-weight: 600;
 }
 .food__portions {
@@ -205,6 +213,6 @@ h4 {
 	font-weight: 700;
 }
 .food-portion__unit {
-	font-size: .625rem;
+	font-size: .6rem;
 	text-transform: uppercase;
 }

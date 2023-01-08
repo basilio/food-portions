@@ -326,165 +326,6 @@ const groups = [
 		]
 	},
 	{
-		name: 'Frutas',
-		portions: null,
-		subgroups: [
-			{
-				name: 'Frutas',
-				portion: null,
-				calories: 65,
-				cho: '15g',
-				protein: '1g',
-				fat: '0g',
-				food_types: [
-					{
-						name: 'Manzana, caqui, durazno, membrillo, naranja, pera',
-						values: [
-							{
-								unit: 'unidad',
-								value: '1'
-							},
-							{
-								unit: 'g',
-								value: '100'
-							}
-						]
-					},
-					{
-						name: '"Ciruelas, damasco, limón, papaya',
-						values: [
-							{
-								unit: 'unidades',
-								value: '3'
-							}
-						]
-					},
-					{
-						name: 'Higos, kiwi, tuna',
-						values: [
-							{
-								unit: 'unidades',
-								value: '2'
-							},
-						]
-					},
-					{
-						name: 'Pepino dulce',
-						values: [
-							{
-								unit: 'unidad grande',
-								value: '1'
-							}
-						]
-					},
-					{
-						name: 'Plátano',
-						values: [
-							{
-								unit: 'unidad',
-								value: '1/2'
-							},
-							{
-								unit: 'g',
-								value: '60'
-							}
-						]
-					},
-					{
-						name: 'Chirimoya',
-						values: [
-							{
-								unit: 'unidad',
-								value: '1/4'
-							}
-						]
-					},
-					{
-						name: 'Cerezas',
-						values: [
-							{
-								unit: 'unidades',
-								value: '15'
-							}
-						]
-					},
-					{
-						name: 'Uvas',
-						values: [
-							{
-								unit: 'unidades',
-								value: '10'
-							}
-						]
-					},
-					{
-						name: '"Frambuesas, frutillas, melón, sandia',
-						values: [
-							{
-								unit: 'taza',
-								value: '1'
-							}
-						]
-					},
-					{
-						name: 'Mora, grosella',
-						values: [
-							{
-								unit: 'taza',
-								value: '1/2'
-							}
-						]
-					},
-					{
-						name: 'Piña',
-						values: [
-							{
-								unit: 'taza',
-								value: '3/4'
-							}
-						]
-					},
-					{
-						name: 'Higos secos, huesillo',
-						values: [
-							{
-								unit: 'unidades',
-								value: '2'
-							}
-						]
-					},
-					{
-						name: 'Pasas',
-						values: [
-							{
-								unit: 'unidades',
-								value: '20'
-							}
-						]
-					},
-					{
-						name: 'Ciruelas',
-						values: [
-							{
-								unit: 'unidades',
-								value: '2 1/2'
-							}
-						]
-					},
-					{
-						name: 'Pera desecada, manzana desecada',
-						values: [
-							{
-								unit: 'rodelas',
-								value: '7'
-							}
-						]
-					}
-				]
-			}
-		]
-	},
-	{
 		name: 'Lácteos',
 		portions: null,
 		subgroups: [
@@ -797,6 +638,326 @@ const groups = [
 		]
 	},
 	{
+		name: 'Aceites y grasas',
+		portions: null,
+		subgroups: [
+			{
+				name: 'Aceites y grasas',
+				portion: null,
+				calories: 180,
+				cho: '0g',
+				protein: '0g',
+				fat: '20g',
+				food_types: [
+					{
+						name: 'Aceite de maravilla, aceite de maíz, aceite de soya, aceite de oliva, aceite de canola',
+						values: [
+							{
+								unit: 'cdta',
+								value: 4
+							}
+						]
+					},
+					{
+						name: 'Manteca de cerdo, manteca vegetal, paté',
+						values: [
+							{
+								unit: 'cda',
+								value: 2
+							}
+						]
+					},
+					{
+						name: 'Mantequilla, margarina',
+						values: [
+							{
+								unit: 'cdta',
+								value: 4
+							}
+						]
+					},
+					{
+						name: 'Crema espesa, crema chantilly',
+						values: [
+							{
+								unit: 'cda',
+								value: 4
+							}
+						]
+					},
+					{
+						name: 'Mayonesa',
+						values: [
+							{
+								unit: 'cda',
+								value: 1
+							}
+						]
+					},
+					{
+						name: 'Crema ácida',
+						values: [
+							{
+								unit: 'taza',
+								value: '1/2'
+							}
+						]
+					},
+					{
+						name: 'Tocino',
+						values: [
+							{
+								unit: 'tajada',
+								value: '1 1/2'
+							}
+						]
+					}
+				]
+			},
+			{
+				name: 'Alimentos ricos en lípidos',
+				portion: null,
+				calories: 180,
+				cho: '0g',
+				protein: '0g',
+				fat: '20g',
+				food_types: [
+					{
+						name: 'Almendras',
+						values: [
+							{
+								unit: 'unidades',
+								value: 26
+							}
+						]
+					},
+					{
+						name: 'Maní',
+						values: [
+							{
+								unit: 'unidades',
+								value: 30
+							}
+						]
+					},
+					{
+						name: 'Nueces',
+						values: [
+							{
+								unit: 'unidades',
+								value: 5
+							}
+						]
+					},
+					{
+						name: 'Aceitunas',
+						values: [
+							{
+								unit: 'unidades',
+								value: 11
+							}
+						]
+					},
+					{
+						name: 'Palta',
+						values: [
+							{
+								unit: 'cda',
+								value: 3
+							}
+						]
+					},
+					{
+						name: 'Avellana',
+						values: [
+							{
+								unit: 'unidades',
+								value: 50
+							}
+						]
+					},
+					{
+						name: 'Pistacho',
+						values: [
+							{
+								unit: 'unidades',
+								value: 40
+							}
+						]
+					},
+					{
+						name: 'Mantequilla de maní',
+						values: [
+							{
+								unit: 'cda',
+								value: 2
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+	{
+		name: 'Frutas',
+		portions: null,
+		subgroups: [
+			{
+				name: 'Frutas',
+				portion: null,
+				calories: 65,
+				cho: '15g',
+				protein: '1g',
+				fat: '0g',
+				food_types: [
+					{
+						name: 'Manzana, caqui, durazno, membrillo, naranja, pera',
+						values: [
+							{
+								unit: 'unidad',
+								value: '1'
+							},
+							{
+								unit: 'g',
+								value: '100'
+							}
+						]
+					},
+					{
+						name: 'Ciruelas, damasco, limón, papaya',
+						values: [
+							{
+								unit: 'unidades',
+								value: '3'
+							}
+						]
+					},
+					{
+						name: 'Higos, kiwi, tuna',
+						values: [
+							{
+								unit: 'unidades',
+								value: '2'
+							},
+						]
+					},
+					{
+						name: 'Pepino dulce',
+						values: [
+							{
+								unit: 'unidad grande',
+								value: '1'
+							}
+						]
+					},
+					{
+						name: 'Plátano',
+						values: [
+							{
+								unit: 'unidad',
+								value: '1/2'
+							},
+							{
+								unit: 'g',
+								value: '60'
+							}
+						]
+					},
+					{
+						name: 'Chirimoya',
+						values: [
+							{
+								unit: 'unidad',
+								value: '1/4'
+							}
+						]
+					},
+					{
+						name: 'Cerezas',
+						values: [
+							{
+								unit: 'unidades',
+								value: '15'
+							}
+						]
+					},
+					{
+						name: 'Uvas',
+						values: [
+							{
+								unit: 'unidades',
+								value: '10'
+							}
+						]
+					},
+					{
+						name: 'Frambuesas, frutillas, melón, sandia',
+						values: [
+							{
+								unit: 'taza',
+								value: '1'
+							}
+						]
+					},
+					{
+						name: 'Mora, grosella',
+						values: [
+							{
+								unit: 'taza',
+								value: '1/2'
+							}
+						]
+					},
+					{
+						name: 'Piña',
+						values: [
+							{
+								unit: 'taza',
+								value: '3/4'
+							}
+						]
+					},
+					{
+						name: 'Higos secos, huesillo',
+						values: [
+							{
+								unit: 'unidades',
+								value: '2'
+							}
+						]
+					},
+					{
+						name: 'Pasas',
+						values: [
+							{
+								unit: 'unidades',
+								value: '20'
+							}
+						]
+					},
+					{
+						name: 'Ciruelas',
+						values: [
+							{
+								unit: 'unidades',
+								value: '2 1/2'
+							}
+						]
+					},
+					{
+						name: 'Pera desecada, manzana desecada',
+						values: [
+							{
+								unit: 'rodelas',
+								value: '7'
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+	{
 		name: 'Carnes, Pescados, Huevos y Leguminosas secas',
 		portions: null,
 		subgroups: [
@@ -861,6 +1022,49 @@ const groups = [
 								unit: 'taza',
 								value: '3/4'
 							},
+						]
+					}
+				]
+			}
+		]
+	},
+	{
+		name: 'Azúcares',
+		portions: null,
+		subgroups: [
+			{
+				name: 'Azúcares',
+				portion: null,
+				calories: 20,
+				cho: '5g',
+				protein: '0g',
+				fat: '0g',
+				food_types: [
+					{
+						name: 'Azúcar, miel de abeja, miel de palma, mermeladas, dulce de membrillo, manjar, jalea en polvo, jugo en polvo',
+						values: [
+							{
+								unit: 'cdta',
+								value: 1
+							}
+						]
+					},
+					{
+						name: 'Bebidas gaseosas, néctar, pulpa de frutas',
+						values: [
+							{
+								unit: 'taza',
+								value: '1/4'
+							}
+						]
+					},
+					{
+						name: 'Helado de agua',
+						values: [
+							{
+								unit: 'unidad',
+								value: '1/4'
+							}
 						]
 					}
 				]
