@@ -324,14 +324,17 @@ table {
 table td,
 table th {
 	font-size: .6125rem;
-	padding-top: .2rem;
-	padding-bottom: .2rem;
+	padding-top: .175rem;
+	padding-bottom: .175rem;
 }
 table tbody tr th:first-child {
 	width: 30%;
 }
 table tbody tr:not(first-child) {
 	border-top: 1px solid var(--color--primary);
+}
+table tbody tr:last-child {
+	border-bottom: 1px solid var(--color--primary);
 }
 table td {
 	width: 10%;
@@ -366,8 +369,8 @@ table tr td:last-child {
 	gap: 1rem;
 }
 .schedule-section + .schedule-section {
-	margin-top: .4rem;
-	padding-top: .4rem;
+	margin-top: .35rem;
+	padding-top: .35rem;
 	border-top: 1px solid var(--color--primary);
 }
 .schedule-section__header {
@@ -392,8 +395,8 @@ table tr td:last-child {
 	gap: .75rem;
 }
 .preparation + .preparation {
-	margin-top: .3rem;
-	padding-top: .3rem;
+	margin-top: .25rem;
+	padding-top: .25rem;
 	border-top: 1px solid var(--color--primary);
 }
 .preparation-food {
@@ -403,8 +406,8 @@ table tr td:last-child {
 	font-size: .6125rem;
 }
 .preparation-food + .preparation-food {
-	margin-top: .2rem;
-	padding-top: .2rem;
+	margin-top: .15rem;
+	padding-top: .15rem;
 	border-top: 1px solid var(--color--primary);
 }
 /* Footer */

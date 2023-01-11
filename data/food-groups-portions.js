@@ -18,7 +18,7 @@ const foodGroupsAndPortions = [
 						values: [
 							{
 								unit: 3,
-								value: '3/4'
+								value: .75
 							}
 						]
 					},
@@ -40,7 +40,7 @@ const foodGroupsAndPortions = [
 						values: [
 							{
 								unit: 3,
-								value: '3/4'
+								value: .75
 							},
 						]
 					},
@@ -73,13 +73,13 @@ const foodGroupsAndPortions = [
 						values: [
 							{
 								unit: 3,
-								value: '1/2'
+								value: .5
 							}
 						]
 					},
 					{
 						foods: [
-							'Tomate (crudo)'
+							'Tomate'
 						],
 						values: [
 							{
@@ -95,7 +95,7 @@ const foodGroupsAndPortions = [
 						values: [
 							{
 								unit: 3,
-								value: '3/4'
+								value: .75
 							},
 						]
 					},
@@ -138,7 +138,7 @@ const foodGroupsAndPortions = [
 						values: [
 							{
 								unit: 3,
-								value: '1/2'
+								value: .5
 							}
 						]
 					},
@@ -187,7 +187,7 @@ const foodGroupsAndPortions = [
 						values: [
 							{
 								unit: 3,
-								value: '3/4'
+								value: .75
 							}
 						]
 					},
@@ -198,7 +198,7 @@ const foodGroupsAndPortions = [
 						values: [
 							{
 								unit: 3,
-								value: '1/4'
+								value: .25
 							},
 							{
 								unit: 4,
@@ -213,7 +213,7 @@ const foodGroupsAndPortions = [
 						values: [
 							{
 								unit: 3,
-								value: '1 1/2'
+								value: 1.5
 							},
 						]
 					},
@@ -257,7 +257,7 @@ const foodGroupsAndPortions = [
 						values: [
 							{
 								unit: 8,
-								value: '1/2'
+								value: .5
 							},
 							{
 								unit: 1,
@@ -267,12 +267,12 @@ const foodGroupsAndPortions = [
 					},
 					{
 						foods: [
-							'Pan Hallulla'
+							'Hallulla'
 						],
 						values: [
 							{
 								unit: 8,
-								value: '1/2'
+								value: .5
 							},
 							{
 								unit: 1,
@@ -297,12 +297,12 @@ const foodGroupsAndPortions = [
 					},
 					{
 						foods: [
-							'Pan integral Hallulla'
+							'Hallulla integral'
 						],
 						values: [
 							{
 								unit: 9,
-								value: '1/2'
+								value: .5
 							},
 							{
 								unit: 1,
@@ -317,7 +317,7 @@ const foodGroupsAndPortions = [
 						values: [
 							{
 								unit: 11,
-								value: '1 1/4'
+								value: 1.25
 							},
 							{
 								unit: 1,
@@ -332,7 +332,7 @@ const foodGroupsAndPortions = [
 						values: [
 							{
 								unit: 11,
-								value: '1 1/4'
+								value: 1.25
 							},
 							{
 								unit: 1,
@@ -342,7 +342,7 @@ const foodGroupsAndPortions = [
 					},
 					{
 						foods: [
-							'Pan Centeno Hallulla'
+							'Hallulla centeno'
 						],
 						values: [
 							{
@@ -433,7 +433,7 @@ const foodGroupsAndPortions = [
 						values: [
 							{
 								unit: 14,
-								value: '1/2'
+								value: .5
 							}
 						]
 					},
@@ -510,7 +510,7 @@ const foodGroupsAndPortions = [
 						values: [
 							{
 								unit: 3,
-								value: '1/2'
+								value: .5
 							},
 							{
 								unit: 2,
@@ -570,7 +570,7 @@ const foodGroupsAndPortions = [
 						values: [
 							{
 								unit: 3,
-								value: '3/4'
+								value: .75
 							},
 							{
 								unit: 2,
@@ -595,7 +595,7 @@ const foodGroupsAndPortions = [
 					},
 					{
 						foods: [
-							'Quesillo'
+							'Quesillo', 'Queso fresco'
 						],
 						values: [
 							{
@@ -782,7 +782,7 @@ const foodGroupsAndPortions = [
 						values: [
 							{
 								unit: 8,
-								value: '1/2'
+								value: .5
 							},
 							{
 								unit: 1,
@@ -797,7 +797,7 @@ const foodGroupsAndPortions = [
 						values: [
 							{
 								unit: 8,
-								value: '1/4'
+								value: .25
 							}
 						]
 					},
@@ -841,7 +841,7 @@ const foodGroupsAndPortions = [
 						values: [
 							{
 								unit: 3,
-								value: '1/2'
+								value: .5
 							}
 						]
 					},
@@ -852,7 +852,7 @@ const foodGroupsAndPortions = [
 						values: [
 							{
 								unit: 3,
-								value: '3/4'
+								value: .75
 							}
 						]
 					},
@@ -885,7 +885,7 @@ const foodGroupsAndPortions = [
 						values: [
 							{
 								unit: 8,
-								value: '2 1/2'
+								value: 2.5
 							}
 						]
 					},
@@ -918,7 +918,7 @@ const foodGroupsAndPortions = [
 				foodTypes: [
 					{
 						foods: [
-							'Aceite de maravilla', 'aceite de maíz', 'aceite de soya', 'aceite de oliva', 'aceite de canola'
+							'Aceite de maravilla', 'aceite de maíz', 'aceite de soya', 'aceite de oliva', 'aceite de canola', 'aceite vegetal'
 						],
 						values: [
 							{
@@ -978,7 +978,7 @@ const foodGroupsAndPortions = [
 						values: [
 							{
 								unit: 3,
-								value: '1/2'
+								value: .5
 							}
 						]
 					},
@@ -989,7 +989,7 @@ const foodGroupsAndPortions = [
 						values: [
 							{
 								unit: 13,
-								value: '1 1/2'
+								value: 1.5
 							}
 						]
 					}
@@ -1168,7 +1168,7 @@ const foodGroupsAndPortions = [
 						values: [
 							{
 								unit: 3,
-								value: '3/4'
+								value: .75
 							},
 						]
 					}
@@ -1206,7 +1206,7 @@ const foodGroupsAndPortions = [
 						values: [
 							{
 								unit: 3,
-								value: '1/4'
+								value: .25
 							}
 						]
 					},
@@ -1217,7 +1217,7 @@ const foodGroupsAndPortions = [
 						values: [
 							{
 								unit: 8,
-								value: '1/4'
+								value: .25
 							}
 						]
 					}

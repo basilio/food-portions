@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 	<link rel="stylesheet" href="../style.css">
 	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<script src="../assets/js/fraction.min.js"></script>
 	<script src="../data/units.js"></script>
 	<script src="../data/food-groups-portions.js"></script>
 </head>
@@ -131,7 +132,7 @@
 								</div>
 								<div class="food__portions">
 									<div class="food-portion" v-for="food_portion in food_type.values">
-										<strong class="food-portion__value">{{ food_portion.value }}</strong>
+										<strong class="food-portion__value">{{ getFraction(food_portion.value) }}</strong>
 										<span class="food-portion__unit">{{ getUnit(food_portion.unit, food_portion.value) }}</span>
 									</div>
 								</div>
@@ -155,6 +156,13 @@
 				}
 			},
 			methods: {
+				getFraction(value) {
+					if ( value % 1 !== 0 ) {
+						const x = new Fraction(value);
+						value = x.toFraction(true);
+					}
+					return value;
+				},
 				getUnit(id, value) {
 					const unit = this.units.find(item => item.id === id);
 					return value > 1 ? unit.pluralAbbr : unit.abbr;

@@ -133,17 +133,19 @@ const schedule = [
 						portion: 1
 					},
 					{
-						name: 'Tomate (crudo)',
-						quantity: '1/2',
+						name: 'Tomate',
+						quantity: .5,
 						unit: 8,
-						portion: '1/2'
+						portion: .5
 					},
 					{
 						name: 'Aceite de oliva',
 						quantity: 2,
 						unit: 5,
-						portion: '1/2'
+						portion: .5
 					},
+				],
+				additionalFoods: [
 					{
 						name: 'Té o hierbas',
 						quantity: 1,
@@ -165,7 +167,7 @@ const schedule = [
 					{
 						name: 'Durazno',
 						quantity: 1,
-						unit: 5,
+						unit: 8,
 						portion: 1
 					}
 				]
@@ -203,6 +205,7 @@ const schedule = [
 					{
 						name: 'Jugo de limón y vinagre',
 						quantity: 'A gusto',
+						unit: null,
 						cho: null,
 						portion: 'Aliños'
 					}
@@ -219,7 +222,7 @@ const schedule = [
 					},
 					{
 						name: 'Arroz blanco',
-						quantity: '3/4',
+						quantity: .75,
 						unit: 3,
 						portion: 1
 					}
@@ -278,7 +281,7 @@ const schedule = [
 				foods: [
 					{
 						name: 'Lentejas',
-						quantity: '3/4',
+						quantity: .75,
 						unit: 3,
 						portion: 1
 					},
@@ -286,7 +289,7 @@ const schedule = [
 						name: 'Arroz blanco',
 						quantity: '1/4',
 						unit: 3,
-						portion: '1/2'
+						portion: .5
 					}
 				]
 			},
@@ -301,21 +304,22 @@ const schedule = [
 					},
 					{
 						name: 'Tomate',
-						quantity: '1/2',
+						quantity: .5,
 						unit: 8,
-						portion: '1/2'
+						portion: .5
 					},
 					{
 						name: 'Aceite vegetal',
 						quantity: 2,
 						unit: 5,
-						portion: '1/2'
+						portion: .5
 					}
 				],
 				additionalFoods: [
 					{
 						name: 'Jugo de limón y vinagre',
 						quantity: 'A gusto',
+						unit: null,
 						cho: null,
 						portion: 'Aliños'
 					}
@@ -330,12 +334,13 @@ const schedule = [
 		preparations: [
 			{
 				name: 'Galletas de chia y romero',
-				foods: [
+				additionalFoods: [
 					{
 						name: 'Galletas de chia romero (Tika)',
 						quantity: 4,
 						unit: 8,
-						portion: '1/2'
+						portion: '1/2 porción de Cereales, Papas y Leguminosas fresca',
+						cho: '13g'
 					}
 				]
 			},
@@ -343,7 +348,8 @@ const schedule = [
 				name: 'Pasta para untar de ricotta',
 				foods: [
 					{
-						name: 'Ricotta (Quillayes)',
+						name: 'Ricotta',
+						nameDetail: '(Quillayes)',
 						quantity: 75,
 						unit: 1,
 						portion: 1
@@ -360,19 +366,22 @@ const schedule = [
 						name: 'Perejil',
 						quantity: 20,
 						unit: 1,
-						portion: null
+						portion: null,
+						cho: null
 					},
 					{
 						name: 'Ajo',
 						quantity: 1,
 						unit: 12,
-						portion: null
+						portion: null,
+						cho: null
 					},
 					{
 						name: 'Sal',
 						quantity: 1,
-						unit: 'pizca',
-						portion: null
+						unit: 17,
+						portion: null,
+						cho: null
 					},
 				]
 			},
@@ -381,7 +390,7 @@ const schedule = [
 				foods: [
 					{
 						name: 'Zanahoria (cruda)',
-						quantity: '1/2',
+						quantity: .5,
 						unit: 3,
 						portion: 1
 					},

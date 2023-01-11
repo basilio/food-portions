@@ -22,6 +22,7 @@
 		}
 	</style>
 	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<script src="../assets/js/fraction.min.js"></script>
 	<script src="../data/units.js"></script>
 	<script src="../data/food-groups-portions.js"></script>
 	<script src="data.js"></script>
@@ -34,8 +35,8 @@
 				<h1 class="page-header__title mb-1">Informe de planificación alimentaria y nutricional</h1>
 				<p class="page-header__patient">Paciente: Francisca Silva</p>
 			</header>
-			<h2 class="mb-3">Referencia de distribución de porciones de alimentos en un día</h2>
-			<table class="mb-5">
+			<!-- <h2 class="mb-3">Referencia de distribución de porciones de alimentos en un día</h2> -->
+			<table class="mb-6">
 				<thead>
 					<tr>
 						<th>Grupos de Alimentos</th>
@@ -61,7 +62,7 @@
 					</tr>
 				</tbody>
 			</table>
-			<h2 class="mb-4">Plan de alimentación de 1 día</h2>
+			<!-- <h2 class="mb-4">Plan de alimentación de 1 día</h2> -->
 			<div class="schedule">
 				<ul class="schedule__header">
 					<li>Preparaciones</li>
@@ -89,10 +90,16 @@
 							<h4 class="preparation__title">{{ preparation.name }}</h4>
 							<ul class="preparation__foods">
 								<li class="preparation-food" v-for="food in preparation.foods">
-									<span class="preparation-food__quantity">{{ food.quantity }} {{ getUnit(food.unit, food.quantity) }}</span>
+									<span class="preparation-food__quantity">{{ getUnit(food.unit, food.quantity) }}</span>
 									<span class="preparation-food__name">{{ food.name }}</span>
-									<span class="preparation-food__portion">{{ food.portion }} porción de {{ getGroup(food.name) }}</span>
-									<span class="preparation-food__cho text-center">{{ getCHO(food.name) }}g</span>
+									<span class="preparation-food__portion">{{ getGroup(food.name, food.portion) }}</span>
+									<span class="preparation-food__cho text-center">{{ getCHO(food.name, food.portion) }}</span>
+								</li>
+								<li class="preparation-food" v-for="food in preparation.additionalFoods">
+									<span class="preparation-food__quantity">{{ getUnit(food.unit, food.quantity) }}</span>
+									<span class="preparation-food__name">{{ food.name }}</span>
+									<span class="preparation-food__portion">{{ food.portion }}</span>
+									<span class="preparation-food__cho text-center">{{ food.cho }}</span>
 								</li>
 							</ul>
 						</div>
@@ -124,8 +131,12 @@
 					}
 					return sum;
 				},
-				getGroup(food) {
+				getGroup(food, portion) {
 					let output = null;
+					if ( portion % 1 !== 0 ) {
+						const x = new Fraction(portion);
+						portion = x.toFraction(true);
+					}
 					this.foodGroups.forEach(group => {
 						group.subgroups.forEach(subgroup => {
 							subgroup.foodTypes.forEach(ft => {
@@ -137,9 +148,9 @@
 							});
 						});
 					});
-					return output;
+					return portion + ' porción de ' + output;
 				},
-				getCHO(food) {
+				getCHO(food, portion) {
 					let cho = 0;
 					this.foodGroups.forEach(group => {
 						group.subgroups.forEach(subgroup => {
@@ -152,11 +163,18 @@
 							});
 						});
 					});
-					return cho;
+					return cho === 0 ? '' : ( cho * portion ) + 'g';
 				},
 				getUnit(unitId, value) {
+					if ( unitId === null ) {
+						return value;
+					}
+					if ( value % 1 !== 0 ) {
+						const x = new Fraction(value);
+						value = x.toFraction(true);
+					}
 					const unit = this.units.find(item => item.id === unitId);
-					return value > 1 ? unit.pluralAbbr : unit.abbr;
+					return value + ' ' + ( value > 1 ?  unit.pluralAbbr : unit.abbr );
 				},
 				getPortion(food, unitId) {
 					let cho = 0;

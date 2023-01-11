@@ -110,5 +110,12 @@ const units = [
 		abbr: 'rodela 3cm',
 		pluralName: 'rodelas 3cm',
 		pluralAbbr: 'rodelas 3cm'
+	},
+	{
+		id: 17,
+		name: 'pizca',
+		abbr: 'pizca',
+		pluralName: 'pizcas',
+		pluralAbbr: 'pizcas'
 	}
 ];
