@@ -9,9 +9,10 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="../style.css">
 	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-	<script src="data.js"></script>
+	<script src="../data/units.js"></script>
+	<script src="../data/food-groups-portions.js"></script>
 </head>
 <body>
 	<div id="app">
@@ -109,27 +110,29 @@
 										<span class="portion-item__label">Calorías</span>
 									</li>
 									<li class="portion-item">
-										<strong class="portion-item__value">{{ subgroup.cho }}</strong>
+										<strong class="portion-item__value">{{ subgroup.cho }}g</strong>
 										<span class="portion-item__label">Carbohidratos</span>
-									</li>							<li class="portion-item">
-										<strong class="portion-item__value">{{ subgroup.protein }}</strong>
+									</li>
+									<li class="portion-item">
+										<strong class="portion-item__value">{{ subgroup.protein }}g</strong>
 										<span class="portion-item__label">Proteínas</span>
-									</li>							<li class="portion-item">
-										<strong class="portion-item__value">{{ subgroup.fat }}</strong>
+									</li>
+									<li class="portion-item">
+										<strong class="portion-item__value">{{ subgroup.fat }}g</strong>
 										<span class="portion-item__label">Lípidos</span>
 									</li>
 								</ul>
 							</div>
 						</header>
 						<ul class="group__foods">
-							<li class="food" v-for="food in subgroup.food_types">
+							<li class="food" v-for="food_type in subgroup.foodTypes">
 								<div class="food__names">
-									<div class="food__name">{{ food.name }}</div>
+									<div class="food__name">{{ food_type.foods.join(', ') }}</div>
 								</div>
 								<div class="food__portions">
-									<div class="food-portion" v-for="food_portion in food.values">
+									<div class="food-portion" v-for="food_portion in food_type.values">
 										<strong class="food-portion__value">{{ food_portion.value }}</strong>
-										<span class="food-portion__unit">{{ food_portion.unit }}</span>
+										<span class="food-portion__unit">{{ getUnit(food_portion.unit, food_portion.value) }}</span>
 									</div>
 								</div>
 							</li>
@@ -147,9 +150,16 @@
 		createApp({
 			data() {
 				return {
-					groups: groups
+					units: units,
+					groups: foodGroupsAndPortions
 				}
-			}
+			},
+			methods: {
+				getUnit(id, value) {
+					const unit = this.units.find(item => item.id === id);
+					return value > 1 ? unit.pluralAbbr : unit.abbr;
+				}
+			},
 		}).mount('#app')
 	</script>
 </body>

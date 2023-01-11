@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Pauta de Alimentación | Valeria Navarro</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+	<link rel="stylesheet" href="../style.css">
+	<style>
+		:root {
+			--font-size--h1:                1rem;
+			/* --font-size--h2:                .875rem; */
+			--font-size--h3:                .6875rem;
+			--font-size--h4:                .6125rem;
+			-font-size--base:               .6875rem;
+			/* --font-size--form-control:      1rem; */
+			/* --container-max-width:			700px; */
+		}
+	</style>
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<script src="../data/units.js"></script>
+	<script src="../data/food-groups-portions.js"></script>
+	<script src="data.js"></script>
+</head>
+<body>
+	<div id="app" class="app--pauta">
+		<div class="container">
+			<!-- Grupo -->
+			<header class="page-header mb-5">
+				<h1 class="page-header__title mb-1">Informe de planificación alimentaria y nutricional</h1>
+				<p class="page-header__patient">Paciente: Francisca Silva</p>
+			</header>
+			<h2 class="mb-3">Referencia de distribución de porciones de alimentos en un día</h2>
+			<table class="mb-5">
+				<thead>
+					<tr>
+						<th>Grupos de Alimentos</th>
+						<th class="text-center">Desayuno</th>
+						<th class="text-center">Colación</th>
+						<th class="text-center">Almuerzo</th>
+						<th class="text-center">Once</th>
+						<th class="text-center">Cena</th>
+						<th class="text-center">Colación</th>
+						<th class="text-center">Total/día</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr v-for="block in distribution">
+						<th>{{ block.name }}</th>
+						<td class="text-center">{{ block.schedule.desayuno }}</td>
+						<td class="text-center">{{ block.schedule.colacion }}</td>
+						<td class="text-center">{{ block.schedule.almuerzo }}</td>
+						<td class="text-center">{{ block.schedule.once }}</td>
+						<td class="text-center">{{ block.schedule.cena }}</td>
+						<td class="text-center">{{ block.schedule.colacion2 }}</td>
+						<td class="text-center">{{ sumObjectProperties(block.schedule) }}</td>
+					</tr>
+				</tbody>
+			</table>
+			<h2 class="mb-4">Plan de alimentación de 1 día</h2>
+			<div class="schedule">
+				<ul class="schedule__header">
+					<li>Preparaciones</li>
+					<li>Cantidad</li>
+					<li>Alimentos</li>
+					<li>Porciones por grupo</li>
+					<li class="text-center">CHO</li>
+				</ul>
+				<section class="schedule-section" v-for="section in schedule">
+					<header class="schedule-section__header">
+						<h3 class="schedule-section__title mb-1">{{ section.name }}</h3>
+						<div class="schedule-section__data">
+							<span class="schedule-section__hour">
+								{{ section.hour }}
+								<span class="schedule-section__unit">hrs</span>
+							</span>
+							<span class="schedule-section__cho">
+								<span class="schedule-section__label">CHO</span>:
+								{{ section.cho }}<span class="schedule-section__unit">g</span>
+							</span>
+						</div>
+					</header>
+					<div class="preparations">
+						<div class="preparation" v-for="preparation in section.preparations">
+							<h4 class="preparation__title">{{ preparation.name }}</h4>
+							<ul class="preparation__foods">
+								<li class="preparation-food" v-for="food in preparation.foods">
+									<span class="preparation-food__quantity">{{ food.quantity }} {{ getUnit(food.unit, food.quantity) }}</span>
+									<span class="preparation-food__name">{{ food.name }}</span>
+									<span class="preparation-food__portion">{{ food.portion }} porción de {{ getGroup(food.name) }}</span>
+									<span class="preparation-food__cho text-center">{{ getCHO(food.name) }}g</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+		<footer class="page-footer">
+			<p>Valeria Navarro Fernández<br>Nutricionista y Magister en Nutrición y Alimentos<br>Rut: 16.968.018-3</p>
+		</footer>
+	</div>
+	<script>
+		const { createApp } = Vue
+		createApp({
+			data() {
+				return {
+					units: units,
+					foodGroups: foodGroupsAndPortions,
+					distribution: distribution,
+					schedule: schedule
+				}
+			},
+			methods: {
+				sumObjectProperties(object) {
+					let sum = 0;
+					for (const prop in object ) {
+						console.log()
+						sum += object[prop];
+					}
+					return sum;
+				},
+				getGroup(food) {
+					let output = null;
+					this.foodGroups.forEach(group => {
+						group.subgroups.forEach(subgroup => {
+							subgroup.foodTypes.forEach(ft => {
+								ft.foods.forEach(f => {
+									if ( f.toLowerCase() === food.toLowerCase() ) {
+										output = subgroup.name;
+									}
+								});
+							});
+						});
+					});
+					return output;
+				},
+				getCHO(food) {
+					let cho = 0;
+					this.foodGroups.forEach(group => {
+						group.subgroups.forEach(subgroup => {
+							subgroup.foodTypes.forEach(ft => {
+								ft.foods.forEach(f => {
+									if ( f.toLowerCase() === food.toLowerCase() ) {
+										cho = subgroup.cho;
+									}
+								});
+							});
+						});
+					});
+					return cho;
+				},
+				getUnit(unitId, value) {
+					const unit = this.units.find(item => item.id === unitId);
+					return value > 1 ? unit.pluralAbbr : unit.abbr;
+				},
+				getPortion(food, unitId) {
+					let cho = 0;
+					this.foodGroups.forEach(group => {
+						group.subgroups.forEach(subgroup => {
+							subgroup.foodTypes.forEach(ft => {
+								ft.foods.forEach(f => {
+									if ( f.toLowerCase() === food.toLowerCase() ) {
+										cho = subgroup.cho;
+									}
+								});
+							});
+						});
+					});
+					return cho;
+				},
+			},
+		}).mount('#app')
+	</script>
+</body>
+</html>
