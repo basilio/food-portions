@@ -267,7 +267,7 @@ const foodGroupsAndPortions = [
 					},
 					{
 						foods: [
-							'Hallulla'
+							'Pan hallulla'
 						],
 						values: [
 							{
@@ -282,22 +282,7 @@ const foodGroupsAndPortions = [
 					},
 					{
 						foods: [
-							'Pan Molde'
-						],
-						values: [
-							{
-								unit: 11,
-								value: 3
-							},
-							{
-								unit: 1,
-								value: 60
-							},
-						]
-					},
-					{
-						foods: [
-							'Hallulla integral'
+							'Pan hallulla integral'
 						],
 						values: [
 							{
@@ -312,42 +297,57 @@ const foodGroupsAndPortions = [
 					},
 					{
 						foods: [
-							'Pan integral molde'
-						],
-						values: [
-							{
-								unit: 11,
-								value: 1.25
-							},
-							{
-								unit: 1,
-								value: 50
-							},
-						]
-					},
-					{
-						foods: [
-							'Pan Centeno Molde'
-						],
-						values: [
-							{
-								unit: 11,
-								value: 1.25
-							},
-							{
-								unit: 1,
-								value: 50
-							},
-						]
-					},
-					{
-						foods: [
-							'Hallulla centeno'
+							'Pan hallulla centeno'
 						],
 						values: [
 							{
 								unit: 9,
 								value: 1
+							},
+							{
+								unit: 1,
+								value: 50
+							},
+						]
+					},
+					{
+						foods: [
+							'Pan molde'
+						],
+						values: [
+							{
+								unit: 11,
+								value: 3
+							},
+							{
+								unit: 1,
+								value: 60
+							},
+						]
+					},
+					{
+						foods: [
+							'Pan molde integral'
+						],
+						values: [
+							{
+								unit: 11,
+								value: 2
+							},
+							{
+								unit: 1,
+								value: 50
+							},
+						]
+					},
+					{
+						foods: [
+							'Pan molde centeno'
+						],
+						values: [
+							{
+								unit: 11,
+								value: 1.25
 							},
 							{
 								unit: 1,
@@ -599,8 +599,12 @@ const foodGroupsAndPortions = [
 						],
 						values: [
 							{
-								unit: 16,
-								value: 1
+								unit: 11,
+								value: 2
+							},
+							{
+								unit: 1,
+								value: 60
 							}
 						]
 					},
@@ -706,8 +710,12 @@ const foodGroupsAndPortions = [
 						],
 						values: [
 							{
-								unit: 16,
-								value: 1
+								unit: 11,
+								value: 3
+							},
+							{
+								unit: 1,
+								value: 90
 							}
 						]
 					}

@@ -121,15 +121,15 @@ const schedule = [
 				name: 'Sandwich de quesillo y tomate',
 				foods: [
 					{
-						name: 'Pan integral molde',
+						name: 'Pan molde integral',
 						quantity: 2,
 						unit: 11,
 						portion: 1
 					},
 					{
 						name: 'Quesillo',
-						quantity: 1,
-						unit: 16,
+						quantity: 2,
+						unit: 11,
 						portion: 1
 					},
 					{
@@ -250,7 +250,7 @@ const schedule = [
 				name: 'Sandwich de queso fresco y mantequilla de maní',
 				foods: [
 					{
-						name: 'Hallulla integral',
+						name: 'Pan hallulla integral',
 						quantity: 50,
 						unit: 1,
 						portion: 1
@@ -258,7 +258,7 @@ const schedule = [
 					{
 						name: 'Queso fresco',
 						quantity: 2,
-						unit: 16,
+						unit: 11,
 						portion: 1
 					},
 					{
@@ -350,38 +350,16 @@ const schedule = [
 					{
 						name: 'Ricotta',
 						nameDetail: '(Quillayes)',
-						quantity: 75,
-						unit: 1,
-						portion: 1
+						quantity: 2,
+						unit: 4	,
+						portion: 1,
+						cho: .7
 					},
 					{
 						name: 'Aceite de oliva',
 						quantity: 1,
 						unit: 5,
 						portion: '1/4'
-					},
-				],
-				additionalFoods: [
-					{
-						name: 'Perejil',
-						quantity: 20,
-						unit: 1,
-						portion: null,
-						cho: null
-					},
-					{
-						name: 'Ajo',
-						quantity: 1,
-						unit: 12,
-						portion: null,
-						cho: null
-					},
-					{
-						name: 'Sal',
-						quantity: 1,
-						unit: 17,
-						portion: null,
-						cho: null
 					},
 				]
 			},

@@ -93,7 +93,7 @@
 									<span class="preparation-food__quantity">{{ getUnit(food.unit, food.quantity) }}</span>
 									<span class="preparation-food__name">{{ food.name }}</span>
 									<span class="preparation-food__portion">{{ getGroup(food.name, food.portion) }}</span>
-									<span class="preparation-food__cho text-center">{{ getCHO(food.name, food.portion) }}</span>
+									<span class="preparation-food__cho text-center">{{ getCHO(food.name, food.portion, food.cho) }}</span>
 								</li>
 								<li class="preparation-food" v-for="food in preparation.additionalFoods">
 									<span class="preparation-food__quantity">{{ getUnit(food.unit, food.quantity) }}</span>
@@ -150,7 +150,10 @@
 					});
 					return portion + ' porción de ' + output;
 				},
-				getCHO(food, portion) {
+				getCHO(food, portion, foodCho) {
+					if ( foodCho !== undefined ) {
+						return foodCho + 'g';
+					}
 					let cho = 0;
 					this.foodGroups.forEach(group => {
 						group.subgroups.forEach(subgroup => {
