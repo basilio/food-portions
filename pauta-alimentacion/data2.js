@@ -6,37 +6,35 @@ const distribution = [
 			almuerzo: 1,
 			once: 1,
 			cena: 1,
+			colacion2: .5
 		}
 	},
 	{
 		name: 'Frutas',
 		schedule: {
 			desayuno: 1,
-			colacion: 1,
+			colacion: 1
 		}
 	},
 	{
 		name: 'Verduras generales',
 		schedule: {
-			desayuno: .5,
 			almuerzo: 1,
-			cena: .5,
-			colacion2: 1
+			cena: 1
 		}
 	},
 	{
 		name: 'Verduras de libre consumo',
 		schedule: {
 			almuerzo: 1,
-			cena: 1,
-			colacion2: 1
+			cena: 1
 		}
 	},
 	{
 		name: 'Lácteos bajos en grasa',
 		schedule: {
-			desayuno: 1,
 			once: 1,
+			cena: 1,
 			colacion2: 1
 		}
 	},
@@ -44,27 +42,27 @@ const distribution = [
 		name: 'Carnes, Pescados, Huevos',
 		schedule: {
 			almuerzo: 1,
+			once: .5,
+			cena: 1
 		}
 	},
 	{
 		name: 'Legumbres',
 		schedule: {
-			cena: 1
 		}
 	},
 	{
 		name: 'Aceites y grasas',
 		schedule: {
-			desayuno: .5,
-			almuerzo: .5,
-			cena: .5,
-			colacion2: .5
+			almuerzo: 1,
+			cena: 1
 		}
 	},
 	{
 		name: 'Alimentos ricos en lípidos',
 		schedule: {
-			once: 1
+			desayuno: .5,
+			colacion2: .5
 		}
 	},
 	{
@@ -81,39 +79,36 @@ const schedule = [
 		cho: 45,
 		preparations: [
 			{
-				name: 'Sandwich de quesillo y tomate',
+				name: 'Porridge de avena y manzana con bebida vegetal de almendras',
 				foods: [
 					{
-						name: 'Pan molde integral',
-						quantity: 2,
-						unit: 11,
+						name: 'Avena entera o integral',
+						quantity: 3,
+						unit: 4,
 						portion: 1
 					},
 					{
-						name: 'Quesillo',
-						quantity: 2,
-						unit: 11,
-						portion: 1
-					},
-					{
-						name: 'Tomate',
-						quantity: .5,
+						name: 'Manzana',
+						nameDetail: 'rallada',
+						quantity: 1,
 						unit: 8,
-						portion: .5
-					},
-					{
-						name: 'Aceite de oliva',
-						quantity: 2,
-						unit: 5,
-						portion: .5
-					},
+						portion: 1
+					}
 				],
 				additionalFoods: [
 					{
-						name: 'Té o hierbas',
+						name: 'Bebida vegetal de almendras (sin azúcar añadida)',
 						quantity: 1,
 						unit: 3,
-						portion: 'Infusiones'
+						portion: '1/2 porción de Alimentos ricos en lípidos',
+						cho: '1.6g'
+					},
+					{
+						name: 'Stevia o alulosa',
+						quantity: 'A gusto',
+						unit: null,
+						cho: null,
+						portion: 'Endulzantes naturales'
 					}
 				]
 			}
@@ -125,13 +120,19 @@ const schedule = [
 		cho: 11,
 		preparations: [
 			{
-				name: 'Fruta picada o entera',
+				name: 'Mix frutillas y arándanos',
 				foods: [
 					{
-						name: 'Durazno',
-						quantity: 1,
-						unit: 8,
-						portion: 1
+						name: 'Frutillas',
+						quantity: .5,
+						unit: 3,
+						portion: .5
+					},
+					{
+						name: 'Arándanos',
+						quantity: .5,
+						unit: 3,
+						portion: .5
 					}
 				]
 			}
@@ -143,25 +144,25 @@ const schedule = [
 		cho: 55,
 		preparations: [
 			{
-				name: 'Ensalada de lechuga con brocoli',
+				name: 'Ensalada de Repollo con Betarraga',
 				foods: [
 					{
-						name: 'Lechuga',
+						name: 'Repollo',
 						quantity: 1,
 						unit: 3,
 						portion: 1
 					},
 					{
-						name: 'Brócoli',
-						quantity: 1,
+						name: 'Betarraga',
+						quantity: .5,
 						unit: 3,
 						portion: 1
 					},
 					{
 						name: 'Aceite vegetal',
-						quantity: 1,
+						quantity: 2,
 						unit: 5,
-						portion: 1
+						portion: .5
 					}
 				],
 				additionalFoods: [
@@ -175,28 +176,29 @@ const schedule = [
 				]
 			},
 			{
-				name: 'Plato de fondo: Chapsui de pollo con arroz',
+				name: 'Plato de fondo: Salteado de jurel con cebolla y fideos',
 				foods: [
 					{
-						name: 'Pollo',
-						quantity: 50,
+						name: 'Jurel',
+						quantity: 70,
 						unit: 1,
 						portion: 1
 					},
 					{
-						name: 'Arroz blanco',
-						quantity: .75,
-						unit: 3,
-						portion: 1
-					}
-				]
-			},
-			{
-				name: 'Fruta picada o entera',
-				foods: [
+						name: 'Cebolla',
+						quantity: .5,
+						unit: 8,
+						portion: .5
+					},
 					{
-						name: 'Frutillas',
-						quantity: 1,
+						name: 'Aceite vegetal',
+						quantity: 2,
+						unit: 5,
+						portion: .5
+					},
+					{
+						name: 'Fideos',
+						quantity: .75,
 						unit: 3,
 						portion: 1
 					}
@@ -210,25 +212,28 @@ const schedule = [
 		cho: 33,
 		preparations: [
 			{
-				name: 'Sandwich de queso fresco y mantequilla de maní',
+				name: 'Sandwich de atún y quesillo',
 				foods: [
 					{
-						name: 'Pan hallulla integral',
-						quantity: 50,
-						unit: 1,
-						portion: 1
-					},
-					{
-						name: 'Queso fresco',
+						name: 'Pan molde integral',
 						quantity: 2,
 						unit: 11,
 						portion: 1
 					},
 					{
-						name: 'Mantequilla de maní',
-						quantity: 1.5,
-						unit: 4,
+						name: 'Quesillo',
+						quantity: 2,
+						unit: 11,
 						portion: 1
+					}
+				],
+				additionalFoods: [
+					{
+						name: 'Atún en agua',
+						quantity: '1/4 tarro',
+						unit: null,
+						portion: '1/2 porción de Carnes, Pescados, Huevos y Leguminosas secas',
+						cho: null
 					}
 				]
 			}
@@ -240,36 +245,48 @@ const schedule = [
 		cho: 55,
 		preparations: [
 			{
-				name: 'Guiso de lentejas con ensalada de lechuga y pepino',
+				name: 'Omelette de huevo con champiñón y tostadas de pan integral',
 				foods: [
 					{
-						name: 'Lentejas',
+						name: 'Pan molde integral',
+						quantity: 1,
+						unit: 11,
+						portion: 1
+					},
+					{
+						name: 'Huevo',
+						quantity: 1,
+						unit: 8,
+						portion: 1
+					},
+					{
+						name: 'Champiñones',
 						quantity: .75,
 						unit: 3,
 						portion: 1
 					},
 					{
-						name: 'Arroz blanco',
-						quantity: .25,
-						unit: 3,
+						name: 'Aceite vegetal',
+						quantity: 2,
+						unit: 5,
 						portion: .5
 					}
 				]
 			},
 			{
-				name: 'Ensalada de Lechuga y tomate',
+				name: 'Ensalada de pepino y queso fresco',
 				foods: [
 					{
-						name: 'Lechuga',
+						name: 'Pepino',
 						quantity: 1,
 						unit: 3,
 						portion: 1
 					},
 					{
-						name: 'Tomate',
-						quantity: .5,
-						unit: 8,
-						portion: .5
+						name: 'Queso fresco',
+						quantity: 2,
+						unit: 11,
+						portion: 1
 					},
 					{
 						name: 'Aceite vegetal',
@@ -296,49 +313,27 @@ const schedule = [
 		cho: 22,
 		preparations: [
 			{
-				name: 'Galletas de chia y romero',
+				name: 'Galletas de chia y romero con queso fresco y aceitunas',
 				additionalFoods: [
 					{
 						name: 'Galletas de chia romero (Tika)',
-						quantity: 4,
+						quantity: 5,
 						unit: 8,
 						portion: '1/2 porción de Cereales, Papas y Leguminosas fresca',
-						cho: '13g'
+						cho: '17g'
 					}
-				]
-			},
-			{
-				name: 'Pasta para untar de ricotta',
+				],
 				foods: [
 					{
-						name: 'Ricotta',
-						nameDetail: '(Quillayes)',
+						name: 'Aceitunas',
+						quantity: 5,
+						unit: 8,
+						portion: .5
+					},
+					{
+						name: 'Queso fresco',
 						quantity: 2,
-						unit: 4	,
-						portion: 1,
-						cho: .7
-					},
-					{
-						name: 'Aceite de oliva',
-						quantity: 1,
-						unit: 5,
-						portion: .25
-					},
-				]
-			},
-			{
-				name: 'Bastones de verduras',
-				foods: [
-					{
-						name: 'Zanahoria (cruda)',
-						quantity: .5,
-						unit: 3,
-						portion: 1
-					},
-					{
-						name: 'Apio',
-						quantity: 1,
-						unit: 3,
+						unit: 11,
 						portion: 1
 					}
 				]

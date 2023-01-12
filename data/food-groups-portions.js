@@ -90,7 +90,7 @@ const foodGroupsAndPortions = [
 					},
 					{
 						foods: [
-							'Cebolla (cruda)'
+							'Cebolla'
 						],
 						values: [
 							{
@@ -247,6 +247,17 @@ const foodGroupsAndPortions = [
 							{
 								unit: 8,
 								value: 8
+							}
+						]
+					},
+					{
+						foods: [
+							'Avena entera o integral'
+						],
+						values: [
+							{
+								unit: 4,
+								value: 3
 							}
 						]
 					},
@@ -833,7 +844,7 @@ const foodGroupsAndPortions = [
 					},
 					{
 						foods: [
-							'Frambuesas', 'frutillas', 'melón', 'sandia'
+							'Frambuesas', 'frutillas', 'melón', 'sandia', 'arándanos'
 						],
 						values: [
 							{

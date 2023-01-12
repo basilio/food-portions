@@ -18,80 +18,11 @@
 <body>
 	<div id="app">
 		<div class="container">
-			<!-- Grupo -->
-			<header class="page-header">
-				<h1 class="page-header__title">Consulta nutricional</h1>
-				<form class="form" action="/" method="post">
-					<fieldset class="form__fieldset personal-data">
-						<h2 class="form__title">Datos personales</h2>
-						<div class="personal-data__fields">
-							<div class="form-group">
-								<label for="name">Nombre</label>
-								<input type="text" name="name" id="name" class="form-control">
-							</div>
-							<div class="form-group">
-								<label for="age">Edad</label>
-								<input type="text" name="age" id="age" class="form-control form-control--sm">
-							</div>
-							<div class="form-group">
-								<label for="weight">Peso corporal</label>
-								<input type="text" name="weight" id="weight" class="form-control form-control--sm">
-							</div>
-							<div class="form-group">
-								<label for="height">Estatura</label>
-								<input type="text" name="height" id="height" class="form-control form-control--sm">
-							</div>
-							<div class="form-group">
-								<label for="imc">IMC</label>
-								<input type="text" name="imc" id="imc" class="form-control form-control--sm">
-							</div>
-							<div class="form-group">
-								<label for="cc">CC</label>
-								<input type="text" name="cc" id="cc" class="form-control form-control--sm">
-							</div>
-							<div class="form-group">
-								<label for="gc">% GC</label>
-								<input type="text" name="gc" id="gc" class="form-control form-control--sm">
-							</div>
-							<div class="form-group">
-								<label for="gv">% GV</label>
-								<input type="text" name="gv" id="gv" class="form-control form-control--sm">
-							</div>
-							<div class="form-group">
-								<label for="me">% ME</label>
-								<input type="text" name="me" id="me" class="form-control form-control--sm">
-							</div>
-							<div class="form-group">
-								<label for="nutritional-diagnosis">Diagnóstico Nutricional</label>
-								<input type="text" name="nutritional-diagnosis" id="nutritional-diagnosis" class="form-control">
-							</div>
-						</div>
-					</fieldset>
-					<fieldset class="form__fieldset daily-requirements">
-						<h2 class="form__title">Requerimientos nutricionales por día</h2>
-						<div class="daily-requirements__fields">
-							<div class="form-group">
-								<label for="calories">Calorías</label>
-								<input type="text" name="calories" id="calories" class="form-control form-control--sm">
-							</div>
-							<div class="form-group">
-								<label for="cho">Carbohidratos</label>
-								<input type="text" name="cho" id="cho" class="form-control form-control--sm">
-							</div>
-							<div class="form-group">
-								<label for="fat">Lípidos</label>
-								<input type="text" name="fat" id="fat" class="form-control form-control--sm">
-							</div>
-							<div class="form-group">
-								<label for="protein">Proteínas</label>
-								<input type="text" name="protein" id="protein" class="form-control form-control--sm">
-							</div>
-						</div>
-					</fieldset>
-				</form>
+			<header class="page-header mb-5">
+				<h1 class="page-header__title mb-1">Informe de planificación alimentaria y nutricional</h1>
+				<p class="page-header__patient">Paciente: Francisca Silva</p>
 			</header>
-			<h2 class="form__title">Tabla de alimentos y porciones</h2>
-			<div class="groups">
+			<div class="groups mb-5">
 				<section class="group" v-for="group in groups">
 					<header class="group__header">
 						<h2 class="group__title">{{ group.name }}</h2>
@@ -141,8 +72,8 @@
 					</div>
 				</section>
 			</div>
-			<footer class="page-footer">
-				<p>Valeria Navarro Fernández<br>Nutricionista y Magister en Nutrición y Alimentos<br>Rut: 16.968.018-3</p>
+			<footer class="page-footer text-center">
+				<p>Informe elaborador por Valeria Navarro Fernández, Nutricionista y Magister en Nutrición y Alimentos.</p>
 			</footer>
 		</div>
 	</div>

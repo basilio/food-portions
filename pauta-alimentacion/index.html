@@ -29,8 +29,7 @@
 </head>
 <body>
 	<div id="app" class="app--pauta">
-		<div class="container">
-			<!-- Grupo -->
+		<div class="container mb-3">
 			<header class="page-header mb-5">
 				<h1 class="page-header__title mb-1">Informe de planificación alimentaria y nutricional</h1>
 				<p class="page-header__patient">Paciente: Francisca Silva</p>
@@ -52,12 +51,12 @@
 				<tbody>
 					<tr v-for="block in distribution">
 						<th>{{ block.name }}</th>
-						<td class="text-center">{{ block.schedule.desayuno }}</td>
-						<td class="text-center">{{ block.schedule.colacion }}</td>
-						<td class="text-center">{{ block.schedule.almuerzo }}</td>
-						<td class="text-center">{{ block.schedule.once }}</td>
-						<td class="text-center">{{ block.schedule.cena }}</td>
-						<td class="text-center">{{ block.schedule.colacion2 }}</td>
+						<td class="text-center">{{ getFraction(block.schedule.desayuno) }}</td>
+						<td class="text-center">{{ getFraction(block.schedule.colacion) }}</td>
+						<td class="text-center">{{ getFraction(block.schedule.almuerzo) }}</td>
+						<td class="text-center">{{ getFraction(block.schedule.once) }}</td>
+						<td class="text-center">{{ getFraction(block.schedule.cena) }}</td>
+						<td class="text-center">{{ getFraction(block.schedule.colacion2) }}</td>
 						<td class="text-center">{{ sumObjectProperties(block.schedule) }}</td>
 					</tr>
 				</tbody>
@@ -91,7 +90,7 @@
 							<ul class="preparation__foods">
 								<li class="preparation-food" v-for="food in preparation.foods">
 									<span class="preparation-food__quantity">{{ getUnit(food.unit, food.quantity) }}</span>
-									<span class="preparation-food__name">{{ food.name }}</span>
+									<span class="preparation-food__name">{{ food.name }}<template v-if="food.nameDetail">{{ ' ' + food.nameDetail }}</template></span>
 									<span class="preparation-food__portion">{{ getGroup(food.name, food.portion) }}</span>
 									<span class="preparation-food__cho text-center">{{ getCHO(food.name, food.portion, food.cho) }}</span>
 								</li>
@@ -107,9 +106,6 @@
 				</section>
 			</div>
 		</div>
-		<footer class="page-footer">
-			<p>Valeria Navarro Fernández<br>Nutricionista y Magister en Nutrición y Alimentos<br>Rut: 16.968.018-3</p>
-		</footer>
 	</div>
 	<script>
 		const { createApp } = Vue
@@ -129,14 +125,20 @@
 						console.log()
 						sum += object[prop];
 					}
-					return sum;
+					return this.getFraction(sum);
+				},
+				getFraction(value) {
+					if ( ! value ) {
+						return null;
+					}
+					if ( value % 1 !== 0 ) {
+						const x = new Fraction(value);
+						value = x.toFraction(true);
+					}
+					return value;
 				},
 				getGroup(food, portion) {
 					let output = null;
-					if ( portion % 1 !== 0 ) {
-						const x = new Fraction(portion);
-						portion = x.toFraction(true);
-					}
 					this.foodGroups.forEach(group => {
 						group.subgroups.forEach(subgroup => {
 							subgroup.foodTypes.forEach(ft => {
@@ -148,7 +150,7 @@
 							});
 						});
 					});
-					return portion + ' porción de ' + output;
+					return this.getFraction(portion) + ' porción de ' + output;
 				},
 				getCHO(food, portion, foodCho) {
 					if ( foodCho !== undefined ) {
@@ -172,12 +174,8 @@
 					if ( unitId === null ) {
 						return value;
 					}
-					if ( value % 1 !== 0 ) {
-						const x = new Fraction(value);
-						value = x.toFraction(true);
-					}
 					const unit = this.units.find(item => item.id === unitId);
-					return value + ' ' + ( value > 1 ?  unit.pluralAbbr : unit.abbr );
+					return this.getFraction(value) + ' ' + ( value > 1 ?  unit.pluralAbbr : unit.abbr );
 				},
 				getPortion(food, unitId) {
 					let cho = 0;

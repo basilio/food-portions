@@ -87,7 +87,7 @@ h3,
 h4 {
 	font-family: var(--font-family--headings);
 }
-.app--pauta .page-header {
+.page-header {
 	display: grid;
 	grid-template-columns: max-content auto;
 	gap: 1.5rem;
@@ -412,7 +412,7 @@ table tr td:last-child {
 }
 /* Footer */
 .page-footer {
-	display: none;
+	/* display: none; */
 }
 /* Text align */
 .text-left {
