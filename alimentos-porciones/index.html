@@ -10,6 +10,17 @@
 	<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 	<link rel="stylesheet" href="../style.css">
+	<link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
+	<style>
+		:root {
+			/* Font sizes */
+			--font-size--h1:                1.0625rem;
+			--font-size--h2:                .8125rem;
+			--font-size--h3:                .8125rem;
+			--font-size--h4:                .75rem;
+			--font-size--base:              .75rem;
+		}
+	</style>
 	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 	<script src="../assets/js/fraction.min.js"></script>
 	<script src="../data/units.js"></script>
@@ -19,10 +30,9 @@
 	<div id="app">
 		<div class="container">
 			<header class="page-header mb-5">
-				<h1 class="page-header__title mb-1">Informe de planificación alimentaria y nutricional</h1>
-				<p class="page-header__patient">Paciente: Francisca Silva</p>
+				<h1 class="page-header__title mb-1">Tabla de alimentos y porciones</h1>
 			</header>
-			<div class="groups mb-5">
+			<div class="groups mb-">
 				<section class="group" v-for="group in groups">
 					<header class="group__header">
 						<h2 class="group__title">{{ group.name }}</h2>
@@ -72,8 +82,11 @@
 					</div>
 				</section>
 			</div>
-			<footer class="page-footer text-center">
-				<p>Informe elaborador por Valeria Navarro Fernández, Nutricionista y Magister en Nutrición y Alimentos.</p>
+			<footer class="page-footer">
+				<p>
+					Valeria Navarro Fernández<br>
+					Nutricionista y Magister en Nutrición y Alimentos
+				</p>
 			</footer>
 		</div>
 	</div>

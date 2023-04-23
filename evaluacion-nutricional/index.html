@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Evaluación nutricional | Valeria Navarro</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<link rel="stylesheet" href="../style.css">
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<script src="../assets/js/fraction.min.js"></script>
+	<link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
+	<!-- <script src="data.js"></script> -->
+</head>
+<body class="min-h-screen">
+	<div id="app" class="app--evaluacion container grid max-w-4xl min-h-screen pt-8">
+		<header class="mb-12">
+			<h1 class="text-4xl">Evaluación nutricional</h1>
+		</header>
+		<div class="evaluacion__body">
+			<form class="evaluation-form mb-12" @submit.prevent="submit(event)">
+				<div class="evaluation-form__group">
+					<h3 class="text-lg mb-4">Datos de la persona</h3>
+					<div class="grid grid-cols-4 gap-6">
+						<div class="col-span-2 form-group mb-4">
+							<label>Nombre</label>
+							<input type="text" class="form-control" v-model="name" required>
+						</div>
+						<div class="col-span-1 form-group mb-4">
+							<label>Sexo</label>
+							<select class="form-control" v-model="sex" required>
+								<option value="" selected></option>
+								<option value="Femenino">Femenino</option>
+								<option value="Masculino">Masculino</option>
+							</select>
+						</div>
+						<div class="col-span-1 form-group">
+							<label>Edad</label>
+							<input type="text" class="form-control" v-model="age" required>
+						</div>
+					</div>
+				</div>
+				<div class="evaluation-form__group">
+					<h3 class="text-lg mb-4">Datos antropométricos</h3>
+					<div class="grid grid-cols-3 gap-6">
+						<div class="form-group mb-4">
+							<label>Peso (kg)</label>
+							<input type="text" class="form-control" v-model="weight" required>
+						</div>
+						<div class="form-group mb-4">
+							<label>Estatura (cm)</label>
+							<input type="text" class="form-control" v-model="height" required>
+						</div>
+						<div class="form-group">
+							<label>Circunferencia de cintura (cm)</label>
+							<input type="text" class="form-control" v-model="waist" required>
+						</div>
+					</div>
+				</div>
+				<div class="evaluation-form__group">
+					<h3 class="text-lg mb-4">Datos de composición corporal</h3>
+					<div class="grid grid-cols-3 gap-6">
+						<div class="form-group mb-4">
+							<label>Grasa corporal (%)</label>
+							<input type="text" class="form-control" v-model="bodyfat" required>
+						</div>
+						<div class="form-group mb-4">
+							<label>Masa muscular (%)</label>
+							<input type="text" class="form-control" v-model="muscle" required>
+						</div>
+						<div class="form-group">
+							<label>Grasa visceral</label>
+							<input type="text" class="form-control" v-model="visceralfat" required>
+						</div>
+					</div>
+				</div>
+				<div class="evaluation-form__submit mb-10">
+					<button type="submit" class="form-submit mx-auto">Ingresar</button>
+				</div>
+			</form>
+			<section class="results mb-24" v-if="state.complete">
+				<h2 class="text-2xl mb-8">Resultados</h2>
+				<!-- IMC -->
+				<div class="result">
+					<p class="result__label">IMC</p>
+					<strong class="result__value">{{ getIMC() }}</strong>
+				</div>
+				<!-- Estado nutricional -->
+				<div class="result">
+					<p class="result__label">Estado nutricional</p>
+					<strong class="result__value">{{ getIMCEvaluation() }}</strong>
+				</div>
+				<!-- Circunferencia de cintura -->
+				<div class="result">
+					<p class="result__label">Obesidad Abdominal</p>
+					<strong class="result__value">{{ getWaistEvaluation() }}</strong>
+				</div>
+				<!-- Grasa corporal -->
+				<div class="result">
+					<p class="result__label">Grasa corporal</p>
+					<strong class="result__value">{{ getBodyFatEvaluation() }}</strong>
+				</div>
+				<!-- Grasa Visceral -->
+				<div class="result">
+					<p class="result__label">Grasa visceral</p>
+					<strong class="result__value">{{ getVisceralFatEvaluation() }}</strong>
+				</div>
+				<!-- Porcentaje de músculo -->
+				<div class="result">
+					<p class="result__label">Músculo esquelético</p>
+					<strong class="result__value">{{ getMuscleEvaluation() }}</strong>
+				</div>
+				<h3 class="col-span-1 text-lg mt-6 mb-4">Diagnostico nutricional</h3>
+				<p class="text-lg">
+					Persona de {{ this.age }} años de sexo <span class="lowercase">{{ this.sex }}</span>, presenta un 
+					estado nutricional de <strong class="lowercase">{{ this.getIMCEvaluation() }}</strong> según IMC,
+					<strong class="lowercase">{{ this.getWaistEvaluation() }}</strong> según su circunferencia de cintura. 
+					Su composición corporal indica que la grasa corporal es <strong class="lowercase">{{ this.getBodyFatEvaluation() }}</strong>, 
+					grasa visceral es <strong class="lowercase">{{ this.getVisceralFatEvaluation() }}</strong> y
+					masa muscular es <strong class="lowercase">{{ this.getMuscleEvaluation() }}</strong> para su edad y sexo.
+				</p>
+			</section>
+		</div>
+		<footer class="mt-auto pb-6">
+			<p>
+				Valeria Navarro Fernández<br>
+				Nutricionista y Magister en Nutrición y Alimentos<br>
+				16.968.018-3
+			</p>
+		</footer>
+	</div>
+	<script>
+		const { createApp } = Vue
+		createApp({
+			data() {
+				return {
+					name: '',
+					sex: '',
+					age: '',
+					height: '',
+					weight: '',
+					waist: '',
+					bodyfat: '',
+					muscle: '',
+					visceralfat: '',
+					state: {
+						complete: false
+					}
+				}
+			},
+			methods: {
+				submit() {
+					console.log('se envió');
+					this.state.complete = true;
+				},
+				getIMC() {
+					return parseFloat( this.weight / ( this.height / 100 ) ** 2 ).toFixed(2);
+				},
+				getIMCEvaluation() {
+					const imc = this.getIMC();
+					let text = '';
+					if ( this.age >= 65 ) {
+						if ( imc < 23 ) {
+							text = 'Bajo peso';
+						} else if ( imc >= 23 && imc < 27.9 ) {
+							text = 'Peso normal';
+						} else if ( imc >= 27.9 && imc < 29.9 ) {
+							text = 'Sobrepeso';
+						} else if ( imc >= 29.9 ) {
+							text = 'Obesidad';	
+						}
+					} else {
+						if ( imc < 18.5 ) {
+							text = 'Bajo peso';
+						} else if ( imc >= 18.5 && imc < 24.9 ) {
+							text = 'Peso normal';
+						} else if ( imc >= 24.9 && imc < 29.9 ) {
+							text = 'Sobrepeso';
+						} else if ( imc >= 29.9 ) {
+							text = 'Obesidad';
+						}
+					}
+					return text;
+				},
+				getWaistEvaluation() {
+					let evaluation = 'Sin obesidad abdominal';
+					if ( 
+						( this.sex === 'Masculino' && this.waist >= 102 ) || 
+						( this.sex === 'Femenino' && this.waist >= 88 ) ) {
+							evaluation = 'Con obesidad abdominal';
+					}
+					return evaluation;
+				},
+				getBodyFatEvaluation() {
+					var clasificacion = "";
+					if (this.age < 18) {
+						clasificacion = "No se puede determinar la clasificación para menores de edad";
+					} else if (this.sex === "Femenino") {
+						if (this.age >= 20 && this.age <= 39) {
+							if (this.bodyfat < 21) {
+								clasificacion = "Baja";
+							} else if (this.bodyfat >= 21 && this.bodyfat < 33) {
+								clasificacion = "Normal";
+							} else if (this.bodyfat >= 33 && this.bodyfat <= 38.9) {
+								clasificacion = "Elevada";
+							} else {
+								clasificacion = "Muy elevada";
+							}
+						} else if (this.age >= 40 && this.age <= 59) {
+							if (this.bodyfat < 23) {
+								clasificacion = "Baja";
+							} else if (this.bodyfat >= 23 && this.bodyfat < 34) {
+								clasificacion = "Normal";
+							} else if (this.bodyfat >= 34 && this.bodyfat <= 39.9) {
+								clasificacion = "Elevada";
+							} else {
+								clasificacion = "Muy elevada";
+							}
+						} else if (this.age >= 60 && this.age <= 79) {
+							if (this.bodyfat < 24) {
+								clasificacion = "Baja";
+							} else if (this.bodyfat >= 24 && this.bodyfat < 36) {
+								clasificacion = "Normal";
+							} else if (this.bodyfat >= 36 && this.bodyfat <= 41.9) {
+								clasificacion = "Elevada";
+							} else {
+								clasificacion = "Muy elevada";
+							}
+						} else {
+							clasificacion = "Edad fuera de rango";
+						}
+					} else if (this.sex === "Masculino") {
+						if (this.age >= 20 && this.age <= 39) {
+							if (this.bodyfat < 8) {
+								clasificacion = "Baja";
+							} else if (this.bodyfat >= 8 && this.bodyfat < 20) {
+								clasificacion = "Normal";
+							} else if (this.bodyfat >= 20 && this.bodyfat <= 24.9) {
+								clasificacion = "Elevada";
+							} else {
+								clasificacion = "Muy elevada";
+							}
+						} else if (this.age >= 40 && this.age <= 59) {
+							if (this.bodyfat < 11) {
+								clasificacion = "Baja";
+							} else if (this.bodyfat >= 11 && this.bodyfat < 22) {
+								clasificacion = "Normal";
+							} else if (this.bodyfat >= 22 && this.bodyfat <= 27.9) {
+								clasificacion = "Elevada";
+							} else {
+								clasificacion = "Muy elevada";
+							}
+						} else if (this.age >= 60 && this.age <= 79) {
+							if (this.bodyfat < 13) {
+								clasificacion = "Baja";
+							} else if (this.bodyfat >= 13 && this.bodyfat < 25) {
+								clasificacion = "Normal";
+							} else if (this.bodyfat >= 25 && this.bodyfat <= 29.9) {
+								clasificacion = "Elevada";
+							} else {
+								clasificacion = "Muy elevada";
+							}
+						} else {
+							clasificacion = "Edad fuera de rango";
+						}
+					}
+					return clasificacion;
+				},
+				getVisceralFatEvaluation() {
+					var clasificacion = "";
+					if (this.visceralfat < 10) {
+						clasificacion = "Normal";
+					} else if (this.visceralfat >= 10 && this.visceralfat <= 14) {
+						clasificacion = "Alta";
+					} else {
+						clasificacion = "Muy alta";
+					}
+					return clasificacion;
+				},
+				getMuscleEvaluation() {
+					var clasificacion = "";
+					if (this.age < 18) {
+						clasificacion = "No se puede determinar la clasificación para menores de edad";
+					} else if (this.sex === "Femenino") {
+						if (this.age >= 18 && this.age <= 39) {
+							if (this.muscle < 24.3) {
+								clasificacion = "Bajo";
+							} else if (this.muscle >= 24.3 && this.muscle < 30.4) {
+								clasificacion = "Normal";
+							} else if (this.muscle >= 30.4 && this.muscle <= 35.3) {
+								clasificacion = "Elevado";
+							} else {
+								clasificacion = "Muy elevado";
+							}
+						} else if (this.age >= 40 && this.age <= 59) {
+							if (this.muscle < 24.1) {
+								clasificacion = "Bajo";
+							} else if (this.muscle >= 24.1 && this.muscle < 30.2) {
+								clasificacion = "Normal";
+							} else if (this.muscle >= 30.2 && this.muscle <= 35.1) {
+								clasificacion = "Elevado";
+							} else {
+								clasificacion = "Muy elevado";
+							}
+						} else if (this.age >= 60 && this.age <= 80) {
+							if (this.muscle < 23.9) {
+								clasificacion = "Bajo";
+							} else if (this.muscle >= 23.9 && this.muscle < 30) {
+								clasificacion = "Normal";
+							} else if (this.muscle >= 30 && this.muscle <= 34.9) {
+								clasificacion = "Elevado";
+							} else {
+								clasificacion = "Muy elevado";
+							}
+						} else {
+							clasificacion = "Edad fuera de rango";
+						}
+					} else if (this.sex === "Masculino") {
+						if (this.age >= 18 && this.age <= 39) {
+							if (this.muscle < 33.3) {
+								clasificacion = "Bajo";
+							} else if (this.muscle >= 33.3 && this.muscle < 39.4) {
+								clasificacion = "Normal";
+							} else if (this.muscle >= 39.4 && this.muscle < 44.1) {
+								clasificacion = "Elevado";
+							} else {
+								clasificacion = "Muy elevado";
+							}
+						} else if (this.age >= 40 && this.age <= 59) {
+							if (this.muscle < 33.1) {
+								clasificacion = "Bajo";
+							} else if (this.muscle >= 33.1 && this.muscle < 39.2) {
+								clasificacion = "Normal";
+							} else if (this.muscle >= 39.2 && this.muscle < 43.9) {
+								clasificacion = "Elevado";
+							} else {
+								clasificacion = "Muy elevado";
+							}
+						} else if (this.age >= 60 && this.age <= 80) {
+							if (this.muscle < 32.9) {
+								clasificacion = "Bajo";
+							} else if (this.muscle >= 32.9 && this.muscle < 39) {
+								clasificacion = "Normal";
+							} else if (this.muscle >= 39 && this.muscle < 43.7) {
+								clasificacion = "Elevado";
+							} else {
+								clasificacion = "Muy elevado";
+							}
+						} else {
+							clasificacion = "Edad fuera de rango";
+						}
+					}
+					return clasificacion;
+				}
+			},
+		}).mount('#app')
+	</script>
+</body>
+</html>
