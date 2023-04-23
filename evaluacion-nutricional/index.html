@@ -17,8 +17,9 @@
 </head>
 <body class="min-h-screen">
 	<div id="app" class="app--evaluacion container grid max-w-4xl min-h-screen pt-8">
-		<header class="mb-12">
-			<h1 class="text-4xl">Evaluación nutricional</h1>
+		<header class="mb-12 grid grid-flow-col items-center">
+			<h1 class="text-3xl">Evaluación nutricional</h1>
+			<span class="text-right">{{ getDate() }}</span>
 		</header>
 		<div class="evaluacion__body">
 			<form class="evaluation-form mb-12" @submit.prevent="submit(event)">
@@ -77,8 +78,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="evaluation-form__submit mb-10">
-					<button type="submit" class="form-submit mx-auto">Ingresar</button>
+				<div class="evaluation-form__submit mt-10 mb-10">
+					<button type="submit" class="form-submit mx-auto">Obtener resultados</button>
 				</div>
 			</form>
 			<section class="results mb-24" v-if="state.complete">
@@ -137,6 +138,7 @@
 		createApp({
 			data() {
 				return {
+					date: '',
 					name: '',
 					sex: '',
 					age: '',
@@ -155,6 +157,23 @@
 				submit() {
 					console.log('se envió');
 					this.state.complete = true;
+					this.date = this.getCurrentDate();
+				},
+				getDate() {
+					return this.date !== '' ? 
+						this.date : 
+						this.getCurrentDate()
+				},
+				getCurrentDate() {
+					return new Date(Date.now())
+						.toLocaleDateString('es-CL',
+							{
+								year: 'numeric',
+								month: 'long',
+								day: 'numeric',
+								timeZone: 'utc'
+							}
+					);
 				},
 				getIMC() {
 					return parseFloat( this.weight / ( this.height / 100 ) ** 2 ).toFixed(2);
